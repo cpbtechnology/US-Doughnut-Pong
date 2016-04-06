@@ -26,6 +26,7 @@ for(var i = 0; i < number_of_rooms; i++) {
   rooms[i] = {count: 0, player_id_having_the_ball: 1}; //, round_started: false};
 }
 
+
 function get_list_of_rooms() {
   var list_of_rooms = {number_of_rooms: number_of_rooms, rooms: []}
   for(var i = 0; i < number_of_rooms; i++) {
