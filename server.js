@@ -4,13 +4,15 @@ var http = require('http')
     
 var file = new(static.Server)('./public');
 
+var port = process.env.PORT || 8000
+
 // since socket.io 0.7 consumes one socket we need another socket to transmit all static files from ./public dir
 server = http.createServer(function(req, res){
   // all static files are served with https://github.com/cloudhead/node-static
   req.addListener('end', function () {
     file.serve(req, res);
   }).resume();
-}).listen(8081);
+}).listen(port);
 
 
 // TODO make port configurable
