@@ -215,11 +215,10 @@ socket.on('list_of_rooms', function(obj){
 	jQuery('#form_for_list_of_rooms button').on('click', function() {
 		if(typeof window.room_id != 'undefined') { 
 			$('#errors_for_list_of_rooms').hide();
-		
 			socket.json.emit('connect', {
 				room_id: window.room_id, 
-				country_code: country_code.toLowerCase(),
-				country_name: country_name
+				country_code: 'us',
+				country_name: 'United States'
 			}); 
 			jQuery.facebox.close();
 		} else {
@@ -301,8 +300,8 @@ jQuery('#player1_arrow').css({left: ((window_width / 2) - player1_arrow_width - 
 jQuery('#player2_arrow').css({left: ((window_width / 2) + 350) + 'px'});
 
 jQuery(function(){
-	geoip2.country(function(location) {
+	/*geoip2.country(function(location) {
 	  country_code = location.country.iso_code;
 		country_name = location.country.names.en;
-	});
+	});*/
 });
