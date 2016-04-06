@@ -176,7 +176,8 @@ var init = function() {
   set_keyboard_bindings_for(current_player_shape);
 }
 
-var socket = io.connect('http://localhost:8080');
+
+var socket = io.connect(window.location.origin);
 
 // messages could be 6 types
 // 1. - 1st/2nd player connected

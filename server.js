@@ -4,20 +4,22 @@ var http = require('http')
     
 var file = new(static.Server)('./public');
 
-var port = process.env.PORT || 8000
-
 // since socket.io 0.7 consumes one socket we need another socket to transmit all static files from ./public dir
 server = http.createServer(function(req, res){
   // all static files are served with https://github.com/cloudhead/node-static
   req.addListener('end', function () {
     file.serve(req, res);
   }).resume();
-}).listen(port);
+});
 
 
 // TODO make port configurable
 // if you going to change this you also will need to change port in the connection line in ./public/pong.js
-var io = require('socket.io/lib/socket.io').listen(server);
+var io = require('socket.io').listen(server);
+
+var port = process.env.PORT || 5000
+
+server.listen(port);
 
 var buffer = []
   , number_of_rooms = 10
